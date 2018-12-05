@@ -7,9 +7,9 @@
         xmlns:local="clr-namespace:WPF_Report_Sample"
         xmlns:chart="http://schemas.syncfusion.com/wpf"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800" 
+        Title="MainWindow" Height="800" Width="800" 
     Loaded="Window_Loaded" 
-    WindowStartupLocation="CenterScreen" WindowState="Maximized"
+    WindowStartupLocation="CenterScreen"
     FontSize="16">
     <Grid>
         <Grid.RowDefinitions>
@@ -18,12 +18,11 @@
         </Grid.RowDefinitions>
         <StackPanel Orientation="Horizontal" Margin="20">
             <TextBox x:Name="text" Text="10248" Width="200"/>
-            <Button Content="Show" Click="Button_Click"/>
+            <Button Content="Show" Click="Button_Click" Margin="20,0,0,0" Width="100"/>
         </StackPanel>
         <chart:ReportViewer x:Name="Viewer" Grid.Row="1"
             ViewMode="Print" 
             ProcessingMode="Local" 
             ReportPath="..\..\Report\InvoiceReport.rdlc" />
-
     </Grid>
 </Window>

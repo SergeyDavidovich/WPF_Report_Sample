@@ -48,13 +48,16 @@ namespace WPF_Report_Sample
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             par = int.Parse(text.Text);
-            SetDataSources();
+
+            var t = Task.Run(() => SetDataSources());
+            t.Wait();
+
+            this.Viewer.RefreshReport();
         }
 
         private void SetDataSources()
         {
             this.Viewer.DataSources.Clear();
-
             var db = new NorthwindContext();
             this.Viewer.DataSources.Add(new Syncfusion.Windows.Reports.ReportDataSource()
             {
@@ -68,9 +71,9 @@ namespace WPF_Report_Sample
                 Value = db.Orders.Where(o => o.OrderID == par)
             });
 
-            this.Viewer.RefreshReport();
-            //db.Database.Connection.Close();
-
+            db.Database.Connection.Close();
         }
+
+
     }
 }
