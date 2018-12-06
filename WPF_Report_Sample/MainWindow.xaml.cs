@@ -22,7 +22,11 @@ namespace WPF_Report_Sample
         public MainWindow()
         {
             InitializeComponent();
+            this.DataContext = new MainWindowViewModel();
+            ViewModel = this.DataContext as MainWindowViewModel;
         }
+
+        public MainWindowViewModel ViewModel { get; set; }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
@@ -37,10 +41,12 @@ namespace WPF_Report_Sample
         private void SetDataSources()
         {
             this.Viewer.DataSources.Clear();
-            var vm = new ViewModel();
+            //var vm = new ViewModel();
 
-            var orders = vm.Orders.Where(o => o.OrderId == par);
-            var OrderDetails = vm.OrderDetails.Where(o => o.OrderId == par);
+            //var vm = (this.DataContext as ViewModel);
+
+            var orders = ViewModel.Orders.Where(o => o.OrderId == par);
+            var OrderDetails = ViewModel.OrderDetails.Where(o => o.OrderId == par);
 
             this.Viewer.DataSources.Add(new Syncfusion.Windows.Reports.ReportDataSource()
             {

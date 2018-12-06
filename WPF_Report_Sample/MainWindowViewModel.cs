@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 
 namespace WPF_Report_Sample
 {
-    public class ViewModel
+    public class MainWindowViewModel
     {
         NorthwindContext context;
-        public ViewModel()
+        public MainWindowViewModel()
         {
             context = new NorthwindContext();
             var orders = context.Orders.ToList();
