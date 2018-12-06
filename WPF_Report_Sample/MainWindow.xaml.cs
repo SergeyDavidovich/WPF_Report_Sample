@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,28 +24,6 @@ namespace WPF_Report_Sample
             InitializeComponent();
         }
 
-        private void Window_Loaded(object sender, RoutedEventArgs e)
-        {
-            //this.Viewer.DataSources.Clear();
-
-            //var db = new NorthwindContext();
-            //this.Viewer.DataSources.Add(new Syncfusion.Windows.Reports.ReportDataSource()
-            //{
-            //    Name = "OrderDetails",
-            //    Value = db.Order_Details.Where(o => o.OrderID == par)
-            //});
-
-            //this.Viewer.DataSources.Add(new Syncfusion.Windows.Reports.ReportDataSource()
-            //{
-            //    Name = "Orders",
-            //    Value = db.Orders.Where(o => o.OrderID == par)
-            //});
-
-            //this.Viewer.RefreshReport();
-
-            //db.Database.Connection.Close();
-        }
-
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             par = int.Parse(text.Text);
@@ -58,22 +37,22 @@ namespace WPF_Report_Sample
         private void SetDataSources()
         {
             this.Viewer.DataSources.Clear();
-            var db = new NorthwindContext();
-            this.Viewer.DataSources.Add(new Syncfusion.Windows.Reports.ReportDataSource()
-            {
-                Name = "OrderDetails",
-                Value = db.Order_Details.Where(o => o.OrderID == par)
-            });
+            var vm = new ViewModel();
+
+            var orders = vm.Orders.Where(o => o.OrderId == par);
+            var OrderDetails = vm.OrderDetails.Where(o => o.OrderId == par);
 
             this.Viewer.DataSources.Add(new Syncfusion.Windows.Reports.ReportDataSource()
             {
                 Name = "Orders",
-                Value = db.Orders.Where(o => o.OrderID == par)
+                Value = orders
             });
 
-            db.Database.Connection.Close();
+            this.Viewer.DataSources.Add(new Syncfusion.Windows.Reports.ReportDataSource()
+            {
+                Name = "OrderDetails",
+                Value = OrderDetails
+            });
         }
-
-
     }
 }
