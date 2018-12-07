@@ -14,15 +14,17 @@ namespace WPF_Report_Sample
         NorthwindContext context;
         public MainWindowViewModel()
         {
-            OrderId = 10248;        
+            OrderId = 10248;
+            //SetDataSets();
         }
 
+        #region DataSets
         public ObservableCollection<OrderObject> Orders { get; set; }
 
         public ObservableCollection<OrderDetailObject> OrderDetails { get; set; }
+        #endregion
 
-        public ObservableCollection<decimal> TotalSum { get; set; }
-
+        #region Bindable Properties
         private int orderId;
         public int OrderId
         {
@@ -30,10 +32,15 @@ namespace WPF_Report_Sample
             set
             {
                 orderId = value;
+                SetDataSets();
                 NotifyPropertyChanged();
             }
         }
-        public void SetDataSets()
+
+        #endregion
+
+
+        private void SetDataSets()
         {
             context = new NorthwindContext();
             var orders = context.Orders.ToList();
@@ -58,20 +65,22 @@ namespace WPF_Report_Sample
                     ProductName = o.Products.ProductName,
                     UnitPrice = o.UnitPrice,
                     Quantity = o.Quantity,
-                    Discount = o.Discount
+                    Discount = o.Discount,
+                    SubTotal = (decimal)((float)o.UnitPrice * o.Quantity * (1 - o.Discount))
                 })
                 .Where(o => o.OrderId == this.OrderId));
-
-            //TotalSum = new ObservableCollection<decimal>
-            //(orderDetails.Select(o=>new decimal {o.UnitPrice+o.Quantity+o.Discount}));
         }
 
+        #region INotifyPropertyChanged implementation
         public event PropertyChangedEventHandler PropertyChanged;
 
         private void NotifyPropertyChanged([CallerMemberName] String propertyName = "")
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+
+
         }
+        #endregion
     }
 
     public class OrderObject
@@ -88,5 +97,6 @@ namespace WPF_Report_Sample
         public short Quantity { get; set; }
         public float Discount { get; set; }
         public string ProductName { get; set; }
+        public decimal SubTotal { get; set; }
     }
 }

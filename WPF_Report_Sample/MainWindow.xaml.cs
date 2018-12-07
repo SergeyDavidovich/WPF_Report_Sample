@@ -30,9 +30,8 @@ namespace WPF_Report_Sample
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            par = int.Parse(text.Text);
+            ////ViewModel.SetDataSets();
 
-            ViewModel.SetDataSets();
             var t = Task.Run(() => SetDataSources());
             t.Wait();
 
@@ -44,7 +43,7 @@ namespace WPF_Report_Sample
             this.Viewer.DataSources.Clear();
 
             var orders = ViewModel.Orders;
-            var orderDetails = ViewModel.OrderDetails;//.Where(o => o.OrderId == par);
+            var orderDetails = ViewModel.OrderDetails;
 
             this.Viewer.DataSources.Add(new Syncfusion.Windows.Reports.ReportDataSource()
             {

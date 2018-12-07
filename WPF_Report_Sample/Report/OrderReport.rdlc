@@ -9,7 +9,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>="Invoice : " + Sum(Fields!OrderId.Value, "Orders")</Value>
+                <Value>="Invoice # " + Sum(Fields!OrderId.Value, "Orders")</Value>
                 <Style>
                   <FontFamily>Segoe UI</FontFamily>
                   <FontSize>16pt</FontSize>
@@ -31,6 +31,11 @@
           <Border>
             <Style>None</Style>
           </Border>
+          <BottomBorder>
+            <Color>Black</Color>
+            <Style>Solid</Style>
+            <Width>1pt</Width>
+          </BottomBorder>
           <PaddingLeft>2pt</PaddingLeft>
           <PaddingRight>2pt</PaddingRight>
           <PaddingTop>2pt</PaddingTop>
@@ -213,6 +218,7 @@
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                     </Textbox>
+                    <rd:Selected>true</rd:Selected>
                   </CellContents>
                 </TablixCell>
                 <TablixCell>
@@ -262,6 +268,7 @@
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                     </Textbox>
+                    <rd:Selected>true</rd:Selected>
                   </CellContents>
                 </TablixCell>
                 <TablixCell>
@@ -311,6 +318,7 @@
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                     </Textbox>
+                    <rd:Selected>true</rd:Selected>
                   </CellContents>
                 </TablixCell>
                 <TablixCell>
@@ -360,6 +368,7 @@
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                     </Textbox>
+                    <rd:Selected>true</rd:Selected>
                   </CellContents>
                 </TablixCell>
                 <TablixCell>
@@ -409,6 +418,7 @@
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                     </Textbox>
+                    <rd:Selected>true</rd:Selected>
                   </CellContents>
                 </TablixCell>
               </TablixCells>
@@ -671,7 +681,7 @@
         </TablixRowHierarchy>
         <DataSetName>OrderDetails</DataSetName>
         <Top>4.41854cm</Top>
-        <Height>1.43812cm</Height>
+        <Height>1.43813cm</Height>
         <Width>16.51cm</Width>
         <ZIndex>4</ZIndex>
         <Style>
@@ -682,6 +692,91 @@
           <FontSize>12pt</FontSize>
         </Style>
       </Tablix>
+      <Textbox Name="SubTotal">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>=Sum(Fields!SubTotal.Value, "OrderDetails")</Value>
+                <Style>
+                  <FontFamily>Segoe UI</FontFamily>
+                  <FontSize>12pt</FontSize>
+                  <FontWeight>Medium</FontWeight>
+                  <Format>'$' 0.00</Format>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Left</TextAlign>
+            </Style>
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>SubTotal</rd:DefaultName>
+        <Top>6.87599cm</Top>
+        <Left>11.37391cm</Left>
+        <Height>0.94396cm</Height>
+        <Width>5.13609cm</Width>
+        <ZIndex>5</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+          <rd:FormatSymbolCulture>en-US</rd:FormatSymbolCulture>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox4">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>TOTAL SUM:</Value>
+                <Style>
+                  <FontFamily>Segoe UI</FontFamily>
+                  <FontSize>12pt</FontSize>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Right</TextAlign>
+            </Style>
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox4</rd:DefaultName>
+        <Top>6.87599cm</Top>
+        <Left>7.52453cm</Left>
+        <Height>0.94396cm</Height>
+        <Width>3.84938cm</Width>
+        <ZIndex>6</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Line Name="Line1">
+        <Top>7.74912cm</Top>
+        <Left>6.95537cm</Left>
+        <Height>0cm</Height>
+        <Width>9.55463cm</Width>
+        <ZIndex>7</ZIndex>
+        <Style>
+          <Border>
+            <Style>Solid</Style>
+          </Border>
+        </Style>
+      </Line>
     </ReportItems>
     <Height>3.69792in</Height>
     <Style />
@@ -760,6 +855,10 @@
           <DataField>Quantity</DataField>
           <rd:TypeName>System.Int16</rd:TypeName>
         </Field>
+        <Field Name="SubTotal">
+          <DataField>SubTotal</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
         <Field Name="UnitPrice">
           <DataField>UnitPrice</DataField>
           <rd:TypeName>System.Decimal</rd:TypeName>
@@ -767,9 +866,9 @@
       </Fields>
       <rd:DataSetInfo>
         <rd:DataSetName>WPF_Report_Sample</rd:DataSetName>
-        <rd:TableName>ViewModel</rd:TableName>
+        <rd:TableName>MainWindowViewModel</rd:TableName>
         <rd:ObjectDataSourceSelectMethod>OrderDetails</rd:ObjectDataSourceSelectMethod>
-        <rd:ObjectDataSourceType>WPF_Report_Sample.ViewModel, WPF_Report_Sample, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</rd:ObjectDataSourceType>
+        <rd:ObjectDataSourceType>WPF_Report_Sample.MainWindowViewModel, WPF_Report_Sample, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</rd:ObjectDataSourceType>
       </rd:DataSetInfo>
     </DataSet>
   </DataSets>

@@ -16,8 +16,12 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <StackPanel Orientation="Horizontal" Margin="20">
-            <TextBox x:Name="text" Text="{Binding OrderId,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="200"/>
-            <Button Content="Show" Click="Button_Click" Margin="20,0,0,0" Width="100"/>
+            <TextBox x:Name="text" 
+                     Text="{Binding OrderId,Mode=TwoWay, UpdateSourceTrigger=LostFocus}" 
+                     Width="200"/>
+            <Button Content="Show" 
+                    Click="Button_Click" Margin="20,0,0,0" 
+                    Width="100"/>
         </StackPanel>
         <chart:ReportViewer x:Name="Viewer" Grid.Row="1"
             ViewMode="Print" 
