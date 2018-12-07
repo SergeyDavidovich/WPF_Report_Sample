@@ -32,6 +32,7 @@ namespace WPF_Report_Sample
         {
             par = int.Parse(text.Text);
 
+            ViewModel.SetDataSets();
             var t = Task.Run(() => SetDataSources());
             t.Wait();
 
@@ -41,12 +42,9 @@ namespace WPF_Report_Sample
         private void SetDataSources()
         {
             this.Viewer.DataSources.Clear();
-            //var vm = new ViewModel();
 
-            //var vm = (this.DataContext as ViewModel);
-
-            var orders = ViewModel.Orders.Where(o => o.OrderId == par);
-            var OrderDetails = ViewModel.OrderDetails.Where(o => o.OrderId == par);
+            var orders = ViewModel.Orders;
+            var orderDetails = ViewModel.OrderDetails;//.Where(o => o.OrderId == par);
 
             this.Viewer.DataSources.Add(new Syncfusion.Windows.Reports.ReportDataSource()
             {
@@ -57,7 +55,7 @@ namespace WPF_Report_Sample
             this.Viewer.DataSources.Add(new Syncfusion.Windows.Reports.ReportDataSource()
             {
                 Name = "OrderDetails",
-                Value = OrderDetails
+                Value = orderDetails
             });
         }
     }

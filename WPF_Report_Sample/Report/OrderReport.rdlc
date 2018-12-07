@@ -9,18 +9,24 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>=Sum(Fields!OrderId.Value, "Orders")</Value>
-                <Style />
+                <Value>="Invoice : " + Sum(Fields!OrderId.Value, "Orders")</Value>
+                <Style>
+                  <FontFamily>Segoe UI</FontFamily>
+                  <FontSize>16pt</FontSize>
+                  <FontWeight>SemiBold</FontWeight>
+                </Style>
               </TextRun>
             </TextRuns>
-            <Style />
+            <Style>
+              <TextAlign>Center</TextAlign>
+            </Style>
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>OrderId</rd:DefaultName>
-        <Top>0.60537cm</Top>
-        <Left>1.16099cm</Left>
-        <Height>0.6cm</Height>
-        <Width>2.5cm</Width>
+        <Top>0.49954cm</Top>
+        <Left>4.02167cm</Left>
+        <Height>0.94396cm</Height>
+        <Width>7.20641cm</Width>
         <Style>
           <Border>
             <Style>None</Style>
@@ -38,18 +44,24 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>=First(Fields!EmployeeName.Value, "Orders")</Value>
-                <Style />
+                <Value>="Employee: " &amp; First(Fields!EmployeeName.Value, "Orders")</Value>
+                <Style>
+                  <FontFamily>Segoe UI</FontFamily>
+                  <FontSize>12pt</FontSize>
+                  <FontWeight>Medium</FontWeight>
+                </Style>
               </TextRun>
             </TextRuns>
-            <Style />
+            <Style>
+              <TextAlign>Right</TextAlign>
+            </Style>
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>EmployeeName</rd:DefaultName>
-        <Top>0.47307cm</Top>
-        <Left>7.08766cm</Left>
+        <Top>1.87537cm</Top>
+        <Left>7.93433cm</Left>
         <Height>0.6cm</Height>
-        <Width>8.61188cm</Width>
+        <Width>8.57567cm</Width>
         <ZIndex>1</ZIndex>
         <Style>
           <Border>
@@ -68,18 +80,24 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>=First(Fields!OrderDate.Value, "Orders")</Value>
-                <Style />
+                <Value>="Order date: " &amp; CStr(First(Fields!OrderDate.Value, "Orders"))</Value>
+                <Style>
+                  <FontFamily>Segoe UI</FontFamily>
+                  <FontSize>12pt</FontSize>
+                  <FontWeight>Medium</FontWeight>
+                  <Format>dd MMMM yyyy 'г.'</Format>
+                </Style>
               </TextRun>
             </TextRuns>
-            <Style />
+            <Style>
+              <TextAlign>Left</TextAlign>
+            </Style>
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>OrderDate</rd:DefaultName>
-        <Top>1.74307cm</Top>
-        <Left>0.76412cm</Left>
+        <Top>3.01307cm</Top>
         <Height>0.6cm</Height>
-        <Width>5.17229cm</Width>
+        <Width>7.20641cm</Width>
         <ZIndex>2</ZIndex>
         <Style>
           <Border>
@@ -98,18 +116,25 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>=First(Fields!CustomerName.Value, "Orders")</Value>
-                <Style />
+                <Value>="Customer: " &amp; First(Fields!CustomerName.Value, "Orders")</Value>
+                <Style>
+                  <FontFamily>Segoe UI</FontFamily>
+                  <FontSize>12pt</FontSize>
+                  <FontWeight>Medium</FontWeight>
+                  <Format>d MMMM yyyy 'г.'</Format>
+                </Style>
               </TextRun>
             </TextRuns>
-            <Style />
+            <Style>
+              <TextAlign>Right</TextAlign>
+            </Style>
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>CustomerName</rd:DefaultName>
-        <Top>1.74307cm</Top>
-        <Left>7.08766cm</Left>
+        <Top>3.01307cm</Top>
+        <Left>7.93433cm</Left>
         <Height>0.6cm</Height>
-        <Width>8.69125cm</Width>
+        <Width>8.57567cm</Width>
         <ZIndex>3</ZIndex>
         <Style>
           <Border>
@@ -494,7 +519,7 @@
           </TablixMembers>
         </TablixRowHierarchy>
         <DataSetName>OrderDetails</DataSetName>
-        <Top>3.14854cm</Top>
+        <Top>4.41854cm</Top>
         <Height>1.2cm</Height>
         <Width>16.51cm</Width>
         <ZIndex>4</ZIndex>
@@ -502,6 +527,8 @@
           <Border>
             <Style>None</Style>
           </Border>
+          <FontFamily>Segoe UI</FontFamily>
+          <FontSize>12pt</FontSize>
         </Style>
       </Tablix>
     </ReportItems>
