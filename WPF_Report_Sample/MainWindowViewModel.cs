@@ -15,7 +15,6 @@ namespace WPF_Report_Sample
         public MainWindowViewModel()
         {
             OrderId = 10248;
-            //SetDataSets();
         }
 
         #region DataSets
@@ -77,8 +76,6 @@ namespace WPF_Report_Sample
         private void NotifyPropertyChanged([CallerMemberName] String propertyName = "")
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-
-
         }
         #endregion
     }

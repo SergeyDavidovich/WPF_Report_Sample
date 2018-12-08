@@ -30,8 +30,6 @@ namespace WPF_Report_Sample
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            ////ViewModel.SetDataSets();
-
             var t = Task.Run(() => SetDataSources());
             t.Wait();
 
