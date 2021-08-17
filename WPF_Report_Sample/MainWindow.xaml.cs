@@ -18,7 +18,6 @@ namespace WPF_Report_Sample
 {
     public partial class MainWindow : Window
     {
-        int par;
         public MainWindow()
         {
             InitializeComponent();
